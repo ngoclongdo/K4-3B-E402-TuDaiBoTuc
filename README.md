@@ -9,8 +9,8 @@
 | Họ và Tên | Mã Học Viên | Vai trò chính | Phần việc đảm nhiệm trong dự án |
 |---|---|---|---|
 |Đỗ Nguyễn Ngọc Long  |2A202602390  |  |  |
-|  |  |  |  |
-|  |  |  |  |
+|Cao Đức Anh  |2A2026  |  |  |
+|Nguyễn Tuấn Anh  |  |  |  |
 |  |  |  |  |
 
 > Nhóm copy nguyên file README này về repo của mình, rồi điền bảng trên. Cột **Phần việc đảm nhiệm** ghi càng cụ thể càng tốt.
