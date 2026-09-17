@@ -9,8 +9,8 @@
 | Họ và Tên | Mã Học Viên | Vai trò chính | Phần việc đảm nhiệm trong dự án |
 |---|---|---|---|
 | Đỗ Nguyễn Ngọc Long | 2A202602390 | Trưởng nhóm / Product Lead | Chốt Canvas, cấu trúc Spec, thiết kế System Prompt Socratic, điều phối chung. |
-| Cao Đức Anh | 2A2026 | Tech Lead / Prototype | Xây dựng Prototype (UI Chatbot + API call LLM), chuẩn bị flow CP2 và video CP3. |
-| Nguyễn Tuấn Anh | | Data & Eval Lead | Data mining (tutor_turns.csv), phân tích khảo sát lớp, xây dựng Golden Set eval/. |
+| Cao Đức Anh | 2A202602754 | Tech Lead / Prototype | Xây dựng Prototype (UI Chatbot + API call LLM), chuẩn bị flow CP2 và video CP3. |
+| Nguyễn Tuấn Anh | 2A202602535 | Data & Eval Lead | Data mining (tutor_turns.csv), phân tích khảo sát lớp, xây dựng Golden Set eval/. |
 
 > Nhóm copy nguyên file README này về repo của mình, rồi điền bảng trên. Cột **Phần việc đảm nhiệm** ghi càng cụ thể càng tốt.
 
