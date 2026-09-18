@@ -317,7 +317,7 @@ def generate_socratic_answer(
     return {
         "type": "happy_path",
         "path_name": "Luồng 1: Happy Path (Socratic & Đúng cỡ - Dưới 3 câu)",
-        "summary": f"Đối với vấn đề bạn hỏi về {slide['title'].lower()}: {first_snip} Hiểu rõ điều này giúp bạn làm chủ thiết kế hệ thống AI hiệu quả hơn.",
+        "summary": f"Đối với vấn đề bạn hỏi về {slide['title'].lower()}: {first_snip}",
         "citations": [citation],
         "probing_question": f"Theo bạn, điều gì sẽ xảy ra nếu ta không kiểm soát tốt phần {best_snippet['title'].lower()} khi ứng dụng vào sản phẩm thực tế?",
         "options": [
