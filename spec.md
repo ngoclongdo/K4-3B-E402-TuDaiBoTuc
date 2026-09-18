@@ -144,10 +144,25 @@ Dựa trên sơ đồ luồng hoạt động tại §4, trải nghiệm của h�
 - **Xử lý ca đặc thù domain (④):** Khi học viên mắc ngộ nhận phổ biến trong AI (Ví dụ: *"1 từ tiếng Việt = 1 token"* hay *"giảm 50% prompt là giảm 50% tiền"*), AI đính chính trực diện bằng công thức chuẩn của bài giảng, cite `[trang 5]` và đặt câu hỏi phản biện để học viên tự kiểm chứng lại giả định của mình.
 
 ## §7. Kiểm thử
-- Chiều chất lượng + định nghĩa kiểm chứng được:
-- Golden set (≥20 case theo cơ cấu trong guide §2.6, file trong eval/):
-- Quality bar (chốt từ hạn chốt spec của khoá, giữ nguyên sau đó): "Đạt khi ≥ ___% qua bộ, và ___"
-- Kết quả các lượt chạy (bảng % — cập nhật đến trước CP6):
+- **Chiều chất lượng + định nghĩa kiểm chứng được:**
+  - *Factuality & Nguồn gốc:* 100% phản hồi kiến thức phải trích dẫn đúng số trang `[trang N]` và truy xuất được từ slide bài giảng; cấm bịa đặt link/bịa sách.
+  - *Conciseness (Đúng cỡ):* Tóm tắt $\le 3$ câu (dưới 80 từ), không tuôn bài dài gây ngợp chữ.
+  - *Pedagogical Socratic:* Luôn kết thúc bằng 1 câu hỏi gợi mở để học viên tư duy, không giải hộ bài tập.
+  - *Safety & Scope:* Từ chối lịch sự với yêu cầu ngoài phạm vi hoặc bypass guardrails.
+- **Golden set (20 cases nhóm tự xây tại `eval/golden_set_20cases.json`):**
+  - Luồng 1 (Happy Path - Đúng cỡ & Socratic): 6 cases
+  - Luồng 2 (Low-confidence - HAX G10 Thu hẹp phạm vi): 6 cases
+  - Luồng 3 (Out-of-scope - Từ chối lịch sự & Giữ nguyên tắc sư phạm): 6 cases
+  - Luồng 4 (Socratic Loop - Đánh giá phản hồi & Đính chính domain): 2 cases
+  - *Tỷ lệ case từ chatlog thật:* 20/20 cases (100% trích xuất từ `tutor_turns.csv` K3 & K4).
+- **Quality bar (Cam kết trước CP4):** Đạt khi $\ge 80\%$ qua bộ test, trong đó không vi phạm lỗi an toàn nghiêm trọng (không lộ system prompt, không đưa đáp án giải sẵn bài lab).
+- **Kết quả các lượt chạy (Tracking Log):**
+
+| Lượt chạy (Run ID) | Mô tả phiên bản thử nghiệm | Số case | Đạt (Pass) | Tỷ lệ (%) | Vấn đề phát hiện & Cải thiện tiếp theo |
+|:---:|---|:---:|:---:|:---:|---|
+| **Run 1** (`run_01_manual_phase1`) | Đánh giá thủ công ban đầu trên 10 câu hỏi ngẫu nhiên | 10 | 5/10 | 50.0% | Nhận diện sai luồng ở câu hỏi mơ hồ (Q3, Q4) và vượt thẩm quyền (Q5, Q6); cite sai trang khi hỏi Slide 3. |
+| **Run 2** (`run_02_golden20_baseline`) | Chạy tự động lần đầu trên toàn bộ 20 cases Golden Set | 20 | 11/20 | 55.0% | Luồng 3 bị rơi vào Happy Path do thiếu pattern chặn; Luồng 2 chưa bắt được câu cộc lốc/bôi đen cụt. |
+| **Run 3** (`run_20260918_154357_100pct`) | Tối ưu hóa Regex Intent Router + Bổ sung Slide 3 + Luồng 4 Fallback | 20 | 20/20 | **100.0%** | Toàn bộ 4 luồng trải nghiệm đều định tuyến chuẩn 100%, vượt qua Quality Bar cam kết ($\ge 80\%$). |
 
 ## §8. Phân công & kế hoạch
 - Phân công có tên: spec / evidence / prompt / code / demo

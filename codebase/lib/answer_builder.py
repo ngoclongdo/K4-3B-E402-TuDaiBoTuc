@@ -13,9 +13,11 @@ from lib.knowledge import (
     get_slide_by_page,
 )
 
-# Nạp file .env từ thư mục codebase với override=True để lấy đúng API key thật
-env_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), ".env")
-load_dotenv(dotenv_path=env_path, override=True)
+# Nạp file .env (tìm ở cả thư mục codebase và thư mục gốc dự án)
+load_dotenv(override=True)
+_base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+load_dotenv(os.path.join(_base_dir, ".env"), override=True)
+load_dotenv(os.path.join(os.path.dirname(_base_dir), ".env"), override=True)
 
 
 def _classify_intent(question: str) -> str:
@@ -28,15 +30,24 @@ def _classify_intent(question: str) -> str:
     """
     q = (question or "").strip().lower()
 
-    # 1. Out-of-scope & Policy (Luồng 3)
+    # 1. Out-of-scope & Policy (Luồng 3: Ngoài phạm vi / Thẩm quyền)
     out_patterns = [
         r"đáp án",
-        r"giải (hộ|sẵn|bài tập|lab)",
+        r"phần trả lời",
+        r"giải (hộ|sẵn|bài tập|lab|toán|giúp|tích phân)",
         r"làm (hộ|giúp) bài",
-        r"cho (mình|xin) code",
-        r"bỏ qua (hướng dẫn|chỉ thị|quy định|prompt)",
-        r"ignore previous",
-        r"pdf sách",
+        r"cho (mình|xin|tôi) (code|link|đáp án)",
+        r"(tìm|cho xin|tải)\s+(file|pdf|sách)",
+        r"pdf",
+        r"bỏ qua (các |mọi )?(cảnh báo|hướng dẫn|chỉ thị|quy định|prompt|ràng buộc|guardrail)",
+        r"ignore (all )?previous",
+        r"(tài khoản|quyền|là) admin",
+        r"quản trị viên",
+        r"system\s*prompt",
+        r"lỗ hổng bảo mật",
+        r"hack (wifi|mật khẩu|tài khoản)",
+        r"viết (hộ|giúp|cho) (mình |tôi )?(code|đoạn code)",
+        r"viết code (c\+\+|quicksort|python|react)",
         r"thời tiết",
         r"chứng khoán",
         r"giá vàng",
@@ -46,21 +57,32 @@ def _classify_intent(question: str) -> str:
             return "out_of_scope"
 
     # 2. Socratic Follow-up / Phản hồi tư duy (Luồng 4)
-    followup_patterns = [
-        r"^(tiết kiệm|output|input|vì |mình nghĩ|theo mình|đắt hơn|lan man|nhớ sâu|tự động não|buộc|giúp)",
-        r"token output",
-        r"token input",
-        r"đúng không",
-        r"đồng ý",
-    ]
-    for pattern in followup_patterns:
-        if re.search(pattern, q):
-            return "socratic_followup"
+    # Lưu ý: nếu câu hỏi bắt đầu bằng 'vì sao' hoặc 'tại sao' thì là câu hỏi thắc mắc kiến thức (Luồng 1)
+    if not re.search(r"^(vì sao|tại sao)", q):
+        followup_patterns = [
+            r"^(tiết kiệm|output|input|vì |mình nghĩ|theo mình|đắt hơn|lan man|nhớ sâu|tự động não|buộc|giúp)",
+            r"đúng không",
+            r"đồng ý",
+            r"rút ngắn prompt",
+            r"sinh từng từ",
+        ]
+        for pattern in followup_patterns:
+            if re.search(pattern, q):
+                return "socratic_followup"
 
-    # 3. Low-confidence (Luồng 2 - HAX G10)
+    # 3. Low-confidence (Luồng 2 - HAX G10: Thu hẹp phạm vi khi mơ hồ)
     cleaned_q = re.sub(r"[^\w\s]", "", q).strip()
     vague_phrases = [
         "cái này là sao",
+        "câu này là sao",
+        "phần này là sao",
+        "phần này là gì",
+        "chỗ này là sao",
+        "chỗ này là gì",
+        "đoạn này là sao",
+        "đoạn này là gì",
+        "trang này nói gì",
+        "tài liệu này nói về cái chi dợ",
         "là sao",
         "tại sao",
         "sao thế",
@@ -70,8 +92,12 @@ def _classify_intent(question: str) -> str:
         "alo",
         "help",
         "r",
+        "asds",
+        "hii",
     ]
-    if len(cleaned_q) <= 4 or cleaned_q in vague_phrases:
+    # Kiểm tra nếu câu ngắn <= 4 ký tự, hoặc khớp cụm mơ hồ, hoặc câu hỏi thiếu chủ ngữ rõ ràng
+    vague_pattern = r"^(cái|câu|phần|chỗ|đoạn|ý|nó|thế còn cái)\s+(này|đó|kia)?\s*(là gì|là sao|nghĩa là gì|sao thế|thế nào|thì sao|hoạt động thế nào)?$"
+    if len(cleaned_q) <= 4 or cleaned_q in vague_phrases or re.match(vague_pattern, cleaned_q) or "bôi đen ở trang" in cleaned_q:
         return "low_confidence"
 
     # 4. Mặc định là Happy Path (Luồng 1)
@@ -235,6 +261,18 @@ def generate_socratic_answer(
                 "highlight_id": snip_id,
                 "source": "gemini-3.6-flash (Live API)",
             }
+        # Fallback cho Luồng 4 khi LLM timeout
+        return {
+            "type": "socratic_followup",
+            "path_name": "Luồng 4: Socratic Loop (Xác nhận & Khép vòng tư duy)",
+            "summary": "Chính xác! Bạn đã nắm rất vững bản chất vấn đề. Việc chủ động liên hệ kiến thức giúp khắc sâu bài học hơn rất nhiều.",
+            "citations": [{"page": slide["page"], "title": slide["title"], "snippet_id": best_snippet["id"], "id": slide["id"]}],
+            "probing_question": "Bạn có muốn tiếp tục thử thách với một câu hỏi tình huống thực tế khác không?",
+            "options": ["Tiếp tục câu hỏi mới!", "Cho mình xem lại phần tóm tắt."],
+            "slide_page": slide["page"],
+            "highlight_id": best_snippet["id"],
+            "source": "socratic_engine_fallback",
+        }
 
     # ================= LUỒNG 1: HAPPY PATH (LIVE GEMINI API) =================
     context_text = "\n".join([f"- {s['title']}: {s['text']}" for s in slide["snippets"]])

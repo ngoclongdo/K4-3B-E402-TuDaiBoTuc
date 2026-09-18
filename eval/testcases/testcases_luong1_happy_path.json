@@ -1,0 +1,128 @@
+[
+  {
+    "id": "L1-01",
+    "turn_id": "T00123",
+    "cohort": "K3",
+    "flow": "Luồng 1: Happy Path - Socratic & Đúng cỡ",
+    "failure_class": "Happy Path - Kiến thức trọng tâm",
+    "trigger_type": "Hỏi về mối quan hệ giữa Token và Chi phí API",
+    "input": {
+      "context": "Slide 05: Token & Chi phí API",
+      "student_question": "Tại sao số lượng token lại ảnh hưởng đến chi phí API?"
+    },
+    "expected_behavior": {
+      "summary_length_check": "Tóm tắt không quá 3 câu, ngắn gọn, súc tích (dưới 80 từ).",
+      "citation_check": "Bắt buộc có trích dẫn đúng [trang 5].",
+      "probing_question": "Phải có 1 câu hỏi gợi mở Socratic và các lựa chọn tương tác."
+    },
+    "eval_criteria": {
+      "pass": "Tóm tắt <= 3 câu, có trích dẫn [trang 5], kết thúc bằng câu hỏi gợi mở, không tuôn bài giảng dài.",
+      "fail": "Phản hồi dài dòng trên 4 câu, không trích dẫn trang hoặc không có câu hỏi gợi mở."
+    }
+  },
+  {
+    "id": "L1-02",
+    "turn_id": "T00092",
+    "cohort": "K3",
+    "flow": "Luồng 1: Happy Path - Socratic & Đúng cỡ",
+    "failure_class": "Happy Path - Khái niệm cốt lõi",
+    "trigger_type": "Học viên hỏi về khái niệm Token trên Slide",
+    "input": {
+      "context": "Slide 05, đoạn bôi đen: Khái niệm Token",
+      "student_question": "Token là gì và 1 từ tiếng Việt thì bằng bao nhiêu token?"
+    },
+    "expected_behavior": {
+      "summary_length_check": "Giải thích rõ 1 token không bằng 1 từ, tiếng Việt mất 1-2 token.",
+      "citation_check": "Trích dẫn đúng [trang 5].",
+      "probing_question": "Đặt câu hỏi kích thích suy nghĩ về ảnh hưởng của độ dài prompt."
+    },
+    "eval_criteria": {
+      "pass": "Nêu đúng quy tắc token tiếng Việt, có trích dẫn nguồn trang, câu hỏi gợi mở hợp lý.",
+      "fail": "Khẳng định 1 từ = 1 token (sai kiến thức domain) hoặc trả lời lan man."
+    }
+  },
+  {
+    "id": "L1-03",
+    "turn_id": "T00119",
+    "cohort": "K3",
+    "flow": "Luồng 1: Happy Path - Socratic & Đúng cỡ",
+    "failure_class": "Happy Path - Cấu trúc kỹ thuật",
+    "trigger_type": "Hỏi về cấu trúc 4 phần của Prompt Engineering",
+    "input": {
+      "context": "Slide 06: Prompt Engineering căn bản",
+      "student_question": "Một prompt chuẩn gồm những thành phần nào?"
+    },
+    "expected_behavior": {
+      "summary_length_check": "Tóm tắt đủ 4 thành phần: Role - Context - Instruction - Output Format.",
+      "citation_check": "Trích dẫn đúng [trang 6].",
+      "probing_question": "Hỏi xem thành phần nào học viên thấy khó kiểm soát nhất."
+    },
+    "eval_criteria": {
+      "pass": "Nêu đúng 4 thành phần theo slide, có cite [trang 6], ngắn gọn.",
+      "fail": "Kể thiếu các thành phần chính hoặc dài dòng quá 3 câu."
+    }
+  },
+  {
+    "id": "L1-04",
+    "turn_id": "T00007",
+    "cohort": "K3",
+    "flow": "Luồng 1: Happy Path - Socratic & Đúng cỡ",
+    "failure_class": "Happy Path - Phương pháp Socratic",
+    "trigger_type": "Hỏi về triết lý học Socratic trong AI Tutor",
+    "input": {
+      "context": "Slide 09: Phương pháp Socratic trong AI Tutor",
+      "student_question": "Phương pháp Socratic giúp người học tránh ngợp chữ như thế nào?"
+    },
+    "expected_behavior": {
+      "summary_length_check": "Giải thích việc thay thế bài giảng dài bằng tóm tắt ngắn + câu hỏi dẫn dắt.",
+      "citation_check": "Trích dẫn đúng [trang 9].",
+      "probing_question": "Đặt câu hỏi gợi mở để người học đối chiếu với cách học truyền thống."
+    },
+    "eval_criteria": {
+      "pass": "Nêu đúng vai trò tránh ngợp nhận thức, cite [trang 9], có câu hỏi gợi mở.",
+      "fail": "Không gắn trích dẫn hoặc văn phong không mang tính đối thoại."
+    }
+  },
+  {
+    "id": "L1-05",
+    "turn_id": "T00030",
+    "cohort": "K3",
+    "flow": "Luồng 1: Happy Path - Socratic & Đúng cỡ",
+    "failure_class": "Happy Path - Kỹ thuật nâng cao",
+    "trigger_type": "Hỏi về kỹ thuật Few-shot prompting",
+    "input": {
+      "context": "Slide 06: Prompt Engineering căn bản",
+      "student_question": "Few-shot prompting là gì và khi nào nên dùng?"
+    },
+    "expected_behavior": {
+      "summary_length_check": "Tóm tắt trong 2-3 câu: cung cấp 1-2 ví dụ mẫu để định hình format.",
+      "citation_check": "Trích dẫn đúng [trang 6].",
+      "probing_question": "Gợi ý câu hỏi về chi phí token khi thêm ví dụ mẫu."
+    },
+    "eval_criteria": {
+      "pass": "Tóm tắt chuẩn xác bản chất few-shot, gắn [trang 6], có câu hỏi gợi mở.",
+      "fail": "Giải thích sai khái niệm hoặc tuôn bài giảng dài quá 100 từ."
+    }
+  },
+  {
+    "id": "L1-06",
+    "turn_id": "T00106",
+    "cohort": "K3",
+    "flow": "Luồng 1: Happy Path - Socratic & Đúng cỡ",
+    "failure_class": "Happy Path - So sánh chi phí",
+    "trigger_type": "Hỏi lý do vì sao Token Output lại đắt hơn Token Input",
+    "input": {
+      "context": "Slide 05: Token & Chi phí API",
+      "student_question": "Vì sao token đầu ra (output) lại đắt hơn gấp 3 đến 4 lần token đầu vào?"
+    },
+    "expected_behavior": {
+      "summary_length_check": "Giải thích chi phí tài nguyên tính toán sinh từng token tuần tự so với đọc song song.",
+      "citation_check": "Trích dẫn đúng [trang 5].",
+      "probing_question": "Hỏi về cách rút gọn phản hồi để tiết kiệm chi phí."
+    },
+    "eval_criteria": {
+      "pass": "Trả lời đúng bản chất kỹ thuật, có cite [trang 5], câu hỏi gợi mở thiết thực.",
+      "fail": "Không giải thích được lý do hoặc bịa đặt thông tin không có trên slide."
+    }
+  }
+]

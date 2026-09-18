@@ -1,0 +1,44 @@
+[
+  {
+    "id": "L4-01",
+    "turn_id": "T00550",
+    "cohort": "K3",
+    "flow": "Luồng 4: Socratic Loop - Phản hồi & Đính chính",
+    "failure_class": "Lớp ④: Đặc thù domain - Ngộ nhận chi phí",
+    "trigger_type": "Học viên phản hồi câu hỏi Socratic về chi phí token",
+    "input": {
+      "context": "Slide 05: Token & Chi phí API",
+      "student_question": "token output đắt hơn vì model phải tự suy nghĩ và sinh từng từ đúng không"
+    },
+    "expected_behavior": {
+      "assessment": "Xác nhận điểm đúng của học viên (sinh tuần tự tốn tài nguyên GPU).",
+      "closure": "Chốt lại kiến thức trong 2-3 câu ngắn gọn.",
+      "probing": "Đặt câu hỏi mở rộng tiếp theo để nâng bậc tư duy."
+    },
+    "eval_criteria": {
+      "pass": "Khen ngợi điểm đúng, giải thích chuẩn xác bản chất kỹ thuật, cite [trang 5].",
+      "fail": "Phản hồi phủ nhận sai sự thật hoặc tuôn bài giảng mới."
+    }
+  },
+  {
+    "id": "L4-02",
+    "turn_id": "T00551",
+    "cohort": "K3",
+    "flow": "Luồng 4: Socratic Loop - Phản hồi & Đính chính",
+    "failure_class": "Lớp ④: Đặc thù domain - Ngộ nhận tối ưu",
+    "trigger_type": "Học viên phản hồi: 'rút ngắn prompt sẽ giảm 50% tiền'",
+    "input": {
+      "context": "Slide 05: Token & Chi phí API",
+      "student_question": "mình nghĩ chỉ cần rút ngắn prompt là giảm được một nửa chi phí rồi"
+    },
+    "expected_behavior": {
+      "assessment": "Chỉ ra điểm chưa toàn diện: Chi phí còn phụ thuộc lớn vào Token Output (vốn đắt hơn gấp 3-4 lần).",
+      "closure": "Đính chính nhẹ nhàng và hướng dẫn khống chế cả Output.",
+      "probing": "Gợi ý cách kiểm soát max_tokens đầu ra."
+    },
+    "eval_criteria": {
+      "pass": "Chỉ rõ ngộ nhận chỉ nhìn vào Input mà quên Output token, cite [trang 5].",
+      "fail": "Đồng ý mù quáng với nhận định sai của học viên."
+    }
+  }
+]

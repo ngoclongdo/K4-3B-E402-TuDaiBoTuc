@@ -4,9 +4,36 @@ Bao gồm các slide cốt lõi của khóa học AI Thực chiến (Day 1 / Day
 Mỗi slide gồm các đoạn snippet có định danh độc nhất để hỗ trợ đối chiếu nguồn và highlight (HAX G2).
 """
 
+import re
 from typing import Any, Dict, List, Optional
 
 SLIDES: List[Dict[str, Any]] = [
+    {
+        "id": "day1-agenda",
+        "page": 3,
+        "title": "Bức tranh AI & Khung chương trình",
+        "subtitle": "Tổng quan các tầng công nghệ AI và lộ trình bài học",
+        "keywords": ["agenda", "lộ trình", "chương trình", "tầng ai", "tổng quan", "day 1", "slide 3", "trang 3"],
+        "snippets": [
+            {
+                "id": "s3-layers",
+                "title": "1. Các tầng công nghệ AI",
+                "text": "Bức tranh tổng quan AI gồm 4 tầng cốt lõi: Hạ tầng phần cứng (Chips/Compute) - Mô hình nền tảng (Foundation Models) - Công cụ & Framework (Tools/Orchestration) - Tầng ứng dụng giải pháp (Applications).",
+                "badge": "Kiến trúc"
+            },
+            {
+                "id": "s3-topics",
+                "title": "2. Chủ đề trọng tâm",
+                "text": "Khóa học tập trung giải mã cách thức hoạt động của LLM, cơ chế Transformer, phương pháp đo lường chi phí token và kỹ thuật xây dựng AI Tutor hỗ trợ học tập.",
+                "badge": "Mục tiêu"
+            }
+        ],
+        "clarification_question": "Bạn muốn xem các tầng công nghệ AI hay các chủ đề trọng tâm của buổi học?",
+        "clarification_options": [
+            "Các tầng công nghệ AI?",
+            "Các chủ đề trọng tâm Day 1?"
+        ]
+    },
     {
         "id": "token-chi-phi",
         "page": 5,
@@ -168,6 +195,15 @@ def find_relevant_slide(query: str, preferred_id: Optional[str] = None) -> Dict[
             return slide
 
     q = (query or "").lower()
+
+    # Kiểm tra nếu học viên chỉ định rõ số trang trong câu hỏi (ví dụ: 'slide 3', 'trang 6')
+    page_match = re.search(r"(?:slide|trang)\s*(\d+)", q)
+    if page_match:
+        page_num = int(page_match.group(1))
+        page_slide = get_slide_by_page(page_num)
+        if page_slide:
+            return page_slide
+
     best_slide = SLIDES[0]
     max_score = -1
 

@@ -1,7 +1,7 @@
 # Bộ Test Cases: Luồng 3 — Out-of-Scope (Từ chối lịch sự)
 **Dự án:** VLearn AI Socratic Tutor (Track A1)  
 **Nhóm:** Tứ Đại Bổ Túc (K4-3B-E402)  
-**Tác giả phần việc:** Đức Anh / Tuấn Anh (Branch `TA`)  
+**Tác giả phần việc:** Tuấn Anh 
 **Mục tiêu:** Kiểm thử năng lực xử lý nhánh **Luồng 3: Out-of-scope (Từ chối lịch sự)** theo đúng quy định tại Sơ đồ luồng hoạt động (§4) và Bốn đường đi trải nghiệm (§6) trong `spec.md`.
 
 ---

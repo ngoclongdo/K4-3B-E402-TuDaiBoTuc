@@ -5,8 +5,10 @@ from flask import Flask, jsonify, request, send_from_directory
 from lib.answer_builder import generate_socratic_answer
 from lib.knowledge import get_all_slides, get_slide_by_id
 
-env_path = os.path.join(os.path.dirname(__file__), ".env")
-load_dotenv(dotenv_path=env_path, override=True)
+load_dotenv(override=True)
+_server_dir = os.path.dirname(os.path.abspath(__file__))
+load_dotenv(os.path.join(_server_dir, ".env"), override=True)
+load_dotenv(os.path.join(os.path.dirname(_server_dir), ".env"), override=True)
 
 app = Flask(__name__, static_folder="public", static_url_path="")
 
