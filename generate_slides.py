@@ -12,10 +12,10 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfbase.pdfmetrics import registerFontFamily
 
 # Đăng ký font hỗ trợ tiếng Việt
-REG_FONT = '/usr/share/fonts/google-carlito-fonts/Carlito-Regular.ttf'
-BOLD_FONT = '/usr/share/fonts/google-carlito-fonts/Carlito-Bold.ttf'
-ITALIC_FONT = '/usr/share/fonts/google-carlito-fonts/Carlito-Italic.ttf'
-BOLDITALIC_FONT = '/usr/share/fonts/google-carlito-fonts/Carlito-BoldItalic.ttf'
+REG_FONT = 'C:/Windows/Fonts/arial.ttf'
+BOLD_FONT = 'C:/Windows/Fonts/arialbd.ttf'
+ITALIC_FONT = 'C:/Windows/Fonts/ariali.ttf'
+BOLDITALIC_FONT = 'C:/Windows/Fonts/arialbi.ttf'
 
 pdfmetrics.registerFont(TTFont('Carlito', REG_FONT))
 pdfmetrics.registerFont(TTFont('Carlito-Bold', BOLD_FONT))
@@ -195,9 +195,9 @@ def create_slides_pdf(output_path):
                   "• Chỉ vỏn vẹn <b>6 / 3.097 lượt</b> (chiếm <b>0.19%</b>) trợ giảng chủ động hỏi ngược lại người học.", body_style),
         Spacer(1, 6),
         Paragraph("<b>5. Khảo sát thực tế tại lớp & Quote nguyên văn (Chuẩn A):</b>", h2_style),
-        Paragraph("Khảo sát 5 học viên thật tại phòng E402 (Cụm C2 & C3):<br/>"
-                  "• <b>5/5 (100%)</b> xác nhận từng bị ngợp chữ hoặc lười đọc khi trợ giảng trả lời quá dài.<br/>"
-                  "• <b>4/5 (80%)</b> chỉ lướt 2 dòng đầu hoặc cuộn nhanh tìm từ khóa thay vì đọc hết.<br/>"
+        Paragraph("Khảo sát 4 học viên thật tại phòng E402 (Cụm C2 & C3):<br/>"
+                  "• <b>4/4 (100%)</b> xác nhận từng bị ngợp chữ hoặc lười đọc khi trợ giảng trả lời quá dài.<br/>"
+                  "• <b>3/4 (75%)</b> chỉ lướt 2 dòng đầu hoặc cuộn nhanh tìm từ khóa thay vì đọc hết.<br/>"
                   "• <i>Quote HV 1:</i> \"Nhiều khi chỉ hỏi một định nghĩa nhỏ mà trợ giảng tuôn cả bài giảng từ đầu, ngợp quá nên mình tắt luôn.\"<br/>"
                   "• <i>Turn T10728:</i> Phản hồi dài 1.128 ký tự giải thích Attention khi học viên chỉ hỏi 1 ý.", quote_style)
     ]
@@ -437,7 +437,7 @@ def create_slides_pdf(output_path):
     # ==========================================
     story.append(PageBreak())
     story.append(Paragraph("TRANG 5 · USER THẬT NÓI GÌ (VALIDATION R6)", title_style))
-    story.append(Paragraph("Kết quả thử nghiệm trực tiếp 5 người dùng ngoài nhóm — Quote nguyên văn — Thay đổi đã thực hiện trước Demo", subtitle_style))
+    story.append(Paragraph("Kết quả thử nghiệm trực tiếp 4 người dùng ngoài nhóm — Quote nguyên văn — Thay đổi đã thực hiện trước Demo", subtitle_style))
     
     user_quotes = [
         [
@@ -561,5 +561,5 @@ def create_slides_pdf(output_path):
     print(f"Đã xuất bản slide thành công: {output_path}")
 
 if __name__ == "__main__":
-    out_pdf = "/home/tuananh/win_d/vinuni/week-2/miniHackathon/K4-3B-E402-TuDaiBoTuc/demo-slides.pdf"
+    out_pdf = "d:/VinUni/mini-hackathon/demo-slides.pdf"
     create_slides_pdf(out_pdf)

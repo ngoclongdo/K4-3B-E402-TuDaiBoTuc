@@ -1,7 +1,7 @@
 # Báo cáo Xác thực Người dùng Ngoài nhóm (User Validation Log — Khối R6)
 
 **Thời gian thực hiện:** 18/09/2026 (Phiên thử nghiệm chuẩn bị cho CP5)  
-**Địa điểm:** Phòng E402, VinUni (Cụm C2 & C3)  
+**Địa điểm:** Phòng E402, VinUni (Cụm C2)  
 **Quy trình thực hiện:** Tuân thủ chuẩn 5 nhịp & quy tắc Mom Test:
 1. Trấn an người thử: Đánh giá chất lượng và độ tiện dụng của sản phẩm, không đánh giá người học.
 2. Hỏi câu chuyện thật: Hỏi về trải nghiệm học tập và hỏi đáp với AI Tutor trên VLearn gần đây nhất.
@@ -11,7 +11,7 @@
 
 ---
 
-## 1. Bảng Nhật ký 5 Người dùng Ngoài nhóm Trải nghiệm Trực tiếp
+## 1. Bảng Nhật ký 4 Người dùng Ngoài nhóm Trải nghiệm Trực tiếp
 
 | STT | Người thử (Tên / Mã HV / Cụm - Phòng) | Có phải Willing User từ CP1? | Task đã giao (Theo outcome) | Hành vi quan sát được (Quan sát trực tiếp) | Quote nguyên văn (Chép đúng lời nói lúc dùng) | Mức nghiêm trọng & Đánh giá |
 |:---:|---|:---:|---|---|---|:---:|
@@ -19,7 +19,6 @@
 | 2 | **Đinh Lệnh Tiến Anh**<br>(2A202602928 · C2 - E402) | **CÓ** (Willing user CP1) | "Đặt một câu hỏi mơ hồ hoặc bôi đen một mẩu ngắn trên slide để xem gia sư AI xử lý như thế nào." | Tiến Anh gõ cộc lốc: *"nó chạy kiểu gì"*. AI lập tức phản hồi ở Luồng 2 (Low-confidence): Không đoán mò, hỏi lại 1 câu ngắn và đưa ra 2 nút lựa chọn (Khái niệm Token hay Chi phí API). Tiến Anh khựng lại 1 giây rồi bấm nút *"Chi phí API"*. | *"À hay đấy, nó không chém gió liều khi mình hỏi cụt lủn mà nó hỏi ngược lại để mình chọn. Nhưng mà cái khung chat bên dưới sau khi mình gửi xong nó không tự xóa text cũ nếu bấm chuột ra ngoài à?"* | **Trung bình (Friction)**<br>Góp ý về trải nghiệm UX: cần làm rõ trạng thái nút bấm gợi ý và auto-clear / auto-focus thanh nhập liệu. |
 | 3 | **Kiều Đình Đoàn**<br>(2A202602936 · C2 - E402) | **CÓ** (Willing user CP1) | "Thử hỏi xin đáp án giải sẵn của bài tập thực hành Mini-exercise trên slide để nộp bài." | Gõ vào ô chat: *"cho mình xin code giải bài tập lab token"*. AI nhận diện Luồng 3 (Out-of-scope / Sư phạm), từ chối lịch sự, giải thích slide bài tập nhằm rèn luyện tư duy và gợi mở 2 bước để tự viết code. Đoàn cười và gật đầu. | *"Nó tỉnh đấy, không mớm đáp án giải sẵn như ChatGPT thông thường. Giữ nguyên tắc thế này mới đúng là trợ giảng cho sinh viên tự học."* | **Tốt (Pedagogical Guardrail)**<br>Xác nhận tính năng từ chối giải hộ đạt chuẩn sư phạm, không vi phạm non-goals. |
 | 4 | **Nguyễn Hoàng Nam**<br>(2A202602485 · C2 - E402) | **CÓ** (Willing user CP1) | "Thử dùng tính năng bôi đen một thuật ngữ trên slide để hỏi trực tiếp." | Nam bôi đen cụm từ *"Context Window"* trên slide. Một popup nhỏ hiện lên *"⚡ Hỏi AI Tutor về đoạn này"*. Nam click vào popup, text được điền tự động vào ô chat. Tuy nhiên Nam muốn sau khi bấm thì gửi luôn thay vì phải bấm nút Gửi lần nữa. | *"Mình bôi đen xong bấm nút popup nhỏ rồi tưởng nó gửi luôn, hóa ra nó mới paste vào ô chat, mình phải tự ấn Enter thêm phát nữa mới chạy."* | **Thấp (UX polish)**<br>Người dùng kỳ vọng thao tác bôi đen $\rightarrow$ hỏi ngay (One-click ask) để tiết kiệm thêm 1 thao tác bấm. |
-| 5 | **Trần Minh Đức**<br>(2A202602114 · C3 - E402) | **Không** (Người dùng ngoài nhóm đổi chéo cụm C3) | "Đọc slide về Prompt Compression và tương tác với AI Tutor trong 3 lượt hội thoại liên tiếp." | Thực hiện đủ 3 lượt chat: hỏi khái niệm $\rightarrow$ bấm câu hỏi Socratic gợi mở $\rightarrow$ đưa ra giả định ngộ nhận *"cắt 50% prompt là giảm nửa tiền"*. AI vào Luồng 4 đính chính trực diện rằng Output token đắt hơn Input token. Đức đọc kỹ và tỏ vẻ bất ngờ. | *"Cái câu hỏi gợi mở ở cuối kích thích phết, làm mình muốn bấm tiếp xem nó giải thích gì. Trả lời ngắn thế này đọc trên điện thoại hay cửa sổ chia đôi không bị mỏi mắt."* | **Tích cực (Engagement)**<br>Chứng minh chu trình đối thoại Socratic tạo ra tương tác 2 chiều thực sự (khác biệt 0.19% ở chatlog cũ). |
 
 ---
 
