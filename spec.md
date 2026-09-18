@@ -241,3 +241,11 @@ flowchart TD
 | **18/9 - 15:30** | Ghi nhận kết quả Run 1 (50%) và Run 2 (55%); phát hiện lỗi bắt luồng mơ hồ và trích dẫn trang Slide 3 | Dựa trên kết quả chạy thử nghiệm thực tế từ bài test tay Phase 1 và baseline tự động |
 | **18/9 - 15:45** | Bổ sung Slide 03 vào `knowledge.py`; mở rộng Regex Intent Router trong `answer_builder.py` | Khắc phục lỗi case `L1-06`, `L2-06`, `L3-02`, nâng tỷ lệ đạt lên 100% tại Run 3 |
 | **18/9 - 16:10** | Hoàn thiện toàn diện cấu trúc §1–§9, khóa công thức Quality Bar tại §7 và tự khai phần chưa xong | Chuẩn hóa tài liệu kỹ thuật hoàn chỉnh phục vụ mốc Checkpoint 4 (CP4) |
+| **18/9 - 18:00** | Cải tiến UX giao diện: bổ sung chip test nhanh Luồng 4, gợi ý phím tắt `Enter` siêu tốc, và tự động focus ô input khi bôi đen text slide | Dựa trên phản hồi từ phiên thử nghiệm trực tiếp 5 người dùng ngoài nhóm (Khối R6 - CP5) tại `validation/user_validation_log.md` |
+
+### Bốn dòng tổng hợp xác thực người dùng ngoài nhóm (Validation Synthesis — CP5):
+1. **Chủ đề lặp nhiều nhất:** Người dùng đánh giá rất cao độ súc tích $\le 3$ câu và tính năng bấm citation `[trang N]` tự động highlight tài liệu gốc; kỳ vọng tinh gọn thêm thao tác bôi đen text để gửi câu hỏi nhanh hơn.
+2. **Thay đổi đã làm trước demo:** Thêm nút chip test nhanh cho Luồng 4 (Đính chính ngộ nhận Domain), cập nhật placeholder hướng dẫn `Enter` để gửi siêu tốc, và tự động cuộn/focus mượt mà.
+3. **Phần giữ nguyên có lý do:** Giữ nguyên bước trung gian cho phép người học xem lại đoạn text đã bôi đen trong ô input thay vì tự gửi ngầm (tuân thủ HAX G10 & G11: tránh gửi nhầm ký tự rác / thiếu ý khi quẹt chuột dở dang).
+4. **Phần đưa vào backlog:** Tích hợp tương tác bằng giọng nói (Voice AI Tutor) và pipeline OCR động hỗ trợ toàn bộ các bộ slide PDF mới trong trường VinUni.
+

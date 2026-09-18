@@ -668,6 +668,12 @@
         color: #b91c1c;
       }
 
+      .chip-btn.loop-chip {
+        background: #f5f3ff;
+        border-color: #ddd6fe;
+        color: #6d28d9;
+      }
+
       /* Composer Input */
       .dock-composer {
         padding: 14px 18px;
@@ -839,6 +845,9 @@
             <button class="chip-btn out-chip" data-query="cho xin đáp án bài tập lab 1">
               🔴 Luồng 3: Cho xin đáp án bài tập Lab 1
             </button>
+            <button class="chip-btn loop-chip" data-query="mình nghĩ chỉ cần rút ngắn prompt là giảm một nửa tiền API rồi">
+              🟣 Luồng 4: Đính chính ngộ nhận Domain
+            </button>
           </div>
         </div>
 
@@ -847,7 +856,7 @@
           <div class="textarea-wrapper">
             <textarea
               id="queryInput"
-              placeholder="Hỏi bất kỳ câu hỏi nào về slide bài học..."
+              placeholder="Hỏi bất kỳ câu hỏi nào (Enter để gửi, Shift+Enter xuống dòng)..."
               rows="1"
             ></textarea>
           </div>
