@@ -7,7 +7,7 @@ Loại: [X] Tối ưu tính năng có sẵn  [ ] Tính năng mới
 ## §1. User & Job
 - **Job executor + workflow:**  
   Học viên khoá học AI Thực chiến (AI20k) đang theo dõi slide bài giảng trực tuyến trên nền tảng VLearn.  
-  *Workflow:* Đang đọc slide bài giảng $\rightarrow$ Gặp một thuật ngữ / công thức chưa hiểu $\rightarrow$ Bôi đen đoạn văn bản hoặc gõ thắc mắc vào khung chat để hỏi trợ giảng $\rightarrow$ Mong muốn nhận ngay giải thích ngắn gọn, đúng trọng tâm để tiếp tục bài học.
+  *Workflow:* Đang đọc slide bài giảng -> Gặp một thuật ngữ / công thức chưa hiểu -> Bôi đen đoạn văn bản hoặc gõ thắc mắc vào khung chat để hỏi trợ giảng -> Mong muốn nhận ngay giải thích ngắn gọn, đúng trọng tâm để tiếp tục bài học.
 - **Core JTBD (không tên sản phẩm / không chữ AI):**  
   Nhanh chóng làm rõ một khái niệm bài học chưa hiểu để tiếp tục mạch học tập mà không bị gián đoạn hay quá tải nhận thức.
 - **Problem statement (KHÔNG chữ AI):**  
@@ -34,7 +34,7 @@ Loại: [X] Tối ưu tính năng có sẵn  [ ] Tính năng mới
 
 | Ứng viên tính năng | Bao nhiêu người bị ảnh hưởng | Tần suất gặp phải | Tốn gì mỗi lần (Cost / Friction) | Mức độ khả thi |
 |---|:---:|:---:|---|:---:|
-| **1. Trợ giảng Socratic tóm tắt $\le 3$ câu + Gợi mở tư duy (ĐƯỢC CHỌN)** | **100% học viên** hỏi bài (hơn 3.000 lượt ở K4) | 3–5 lần / mỗi buổi học | Tốn 2–3 phút đọc bài dài, ngợp chữ, mất mạch tập trung bài giảng | **Rất cao** (tập trung vào Prompt Engineering & Context Retrieval) |
+| **1. Trợ giảng Socratic tóm tắt $\le 3$ câu + Gợi mở tư duy (ĐƯỢC CHỌN)** | **100% học viên** hỏi bài (hơn 3.000 lượt ở K3) | 3–5 lần / mỗi buổi học | Tốn 2–3 phút đọc bài dài, ngợp chữ, mất mạch tập trung bài giảng | **Rất cao** (tập trung vào Prompt Engineering & Context Retrieval) |
 | **2. Tự động sinh Flashcard ghi nhớ sau buổi học** | ~40% học viên có thói quen ôn tập | 1 lần sau khi kết thúc buổi | Tốn 15 phút tổng hợp lại kiến thức rời rạc | Trung bình (cần xử lý pipeline dài sau buổi học) |
 | **3. Trắc nghiệm kiểm tra kiến thức tự động (Quiz Generator)** | ~50% học viên muốn tự test | 1–2 lần / tuần | Tốn thời gian làm bài, dễ tạo thêm áp lực học tập | Cao |
 
